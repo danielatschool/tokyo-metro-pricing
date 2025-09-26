@@ -1,38 +1,52 @@
-import math  # Importiere das math-Modul für mathematische Funktionen
+import math
 
-# Berechnet den Fahrpreis basierend auf der zurückgelegten Strecke
 def berechne_fahrpreis(strecke):
-    # Wenn die Strecke kleiner oder gleich 6 km ist, beträgt der Fahrpreis 170 Yen
+    """
+    Berechnet den Fahrpreis basierend auf der zurückgelegten Strecke.
+    
+    Parameter:
+      strecke (int): Zurückgelegte Strecke in Kilometern.
+      
+    Rückgabewert:
+      int: Fahrpreis in Yen.
+    """
     if strecke <= 6:
-        return 170
-    # Wenn die Strecke zwischen 7 und 11 km liegt, beträgt der Fahrpreis 200 Yen
+        return 170  # Bis 6 km
     elif strecke <= 11:
-        return 200
-    # Wenn die Strecke zwischen 12 und 19 km liegt, beträgt der Fahrpreis 250 Yen
+        return 200  # 7-11 km
     elif strecke <= 19:
-        return 250
-    # Wenn die Strecke zwischen 20 und 27 km liegt, beträgt der Fahrpreis 290 Yen
+        return 250  # 12-19 km
     elif strecke <= 27:
-        return 290
-    # Für Strecken über 27 km beträgt der Fahrpreis 320 Yen
+        return 290  # 20-27 km
     else:
-        return 320
+        return 320  # Über 27 km
 
-# Berechnet den Kinderpreis aus dem Preis der Erwachsenen, abgerundet auf das nächste Zehnfache
 def berechne_kinderpreis(erwachsenenpreis):
-    # Kinder zahlen die Hälfte des Erwachsenentarifs
+    """
+    Berechnet den Kinderpreis als die Hälfte des Erwachsenenpreises,
+    abgerundet auf das nächste Zehnfache.
+    
+    Parameter:
+      erwachsenenpreis (int): Fahrpreis für Erwachsene in Yen.
+      
+    Rückgabewert:
+      int: Kinderpreis in Yen.
+    """
     kinderpreis = erwachsenenpreis / 2
-    # Rundet den Preis auf das nächste Zehnfache
     return math.ceil(kinderpreis / 10) * 10
 
-# Fordert den Benutzer auf, die Strecke in Kilometern einzugeben
-strecke = int(input("Bitte geben Sie die Strecke in Kilometern ein: "))
-# Ermittelt den Fahrpreis für Erwachsene basierend auf der eingegebenen Strecke
-erwachsenenpreis = berechne_fahrpreis(strecke)
-# Berechnet den Preis für Kinder
-kinderpreis = berechne_kinderpreis(erwachsenenpreis)
+def main():
+    # Benutzer zur Eingabe der Strecke (in Kilometern) auffordern
+    strecke = int(input("Bitte geben Sie die Strecke (in km) ein: "))
 
-# Gibt den berechneten Fahrpreis aus
-print(f"Der Fahrpreis für {strecke} km beträgt:")
-print(f"Erwachsene: {erwachsenenpreis} Yen")
-print(f"Kinder: {kinderpreis} Yen")
+    # Fahrpreise berechnen
+    erwachsenenpreis = berechne_fahrpreis(strecke)
+    kinderpreis = berechne_kinderpreis(erwachsenenpreis)
+
+    # Ergebnisse ausgeben
+    print(f"Der Fahrpreis für {strecke} km beträgt:")
+    print(f"Erwachsene: {erwachsenenpreis} Yen")
+    print(f"Kinder: {kinderpreis} Yen")
+
+if __name__ == '__main__':
+    main()
