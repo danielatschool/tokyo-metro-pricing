@@ -1,15 +1,6 @@
 import math
 
 def berechne_fahrpreis(strecke):
-    """
-    Berechnet den Fahrpreis basierend auf der zurückgelegten Strecke.
-    
-    Parameter:
-      strecke (int): Zurückgelegte Strecke in Kilometern.
-      
-    Rückgabewert:
-      int: Fahrpreis in Yen.
-    """
     if strecke <= 6:
         return 170  # Bis 6 km
     elif strecke <= 11:
@@ -22,16 +13,6 @@ def berechne_fahrpreis(strecke):
         return 320  # Über 27 km
 
 def berechne_kinderpreis(erwachsenenpreis):
-    """
-    Berechnet den Kinderpreis als die Hälfte des Erwachsenenpreises,
-    abgerundet auf das nächste Zehnfache.
-    
-    Parameter:
-      erwachsenenpreis (int): Fahrpreis für Erwachsene in Yen.
-      
-    Rückgabewert:
-      int: Kinderpreis in Yen.
-    """
     kinderpreis = erwachsenenpreis / 2
     return math.ceil(kinderpreis / 10) * 10
 
